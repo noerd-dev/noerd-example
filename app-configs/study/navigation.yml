@@ -1,0 +1,25 @@
+- title: Study
+  name: study
+  hidden: true
+  route: study.dashboard
+  block_menus:
+    - title: study_nav_dashboard
+      route: study.dashboard
+      heroicon: home
+    - title: study_nav_learning
+      navigations:
+        - title: study_nav_study_materials
+          route: study.study-materials
+          heroicon: book-open
+          newComponent: study-material-detail
+        - title: study_nav_summaries
+          route: study.summaries
+          heroicon: document-text
+          newComponent: summary-detail
+        - title: study_nav_flashcards
+          route: study.flashcards
+          heroicon: rectangle-stack
+          newComponent: flashcard-detail
+        - title: study_nav_print_flashcards
+          route: study.flashcards-print
+          heroicon: printer

@@ -1,0 +1,22 @@
+title: study_label_study_materials
+newLabel: study_label_new_study_material
+component: study-material-detail
+disableSearch: false
+redirectAction: ''
+columns:
+  - field: title
+    label: study_label_title
+    width: 25
+  - field: author
+    label: study_label_author
+    width: 20
+  - field: page_count
+    label: study_label_page_count
+    width: 15
+  - field: publication_year
+    label: study_label_publication_year
+    width: 15
+  - field: created_at
+    label: study_label_created_at
+    width: 15
+    type: date

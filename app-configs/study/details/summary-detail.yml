@@ -1,0 +1,19 @@
+title: study_label_summary
+description: ''
+fields:
+  - name: detailData.title
+    label: study_label_title
+    type: text
+    colspan: 12
+    required: true
+  - name: detailData.study_material_id
+    label: study_label_study_material
+    type: relation
+    colspan: 12
+    relationField: relationTitles.study_material_id
+    modalComponent: study-materials-list
+  - name: detailData.content
+    label: study_label_content
+    type: richText
+    colspan: 12
+    rows: 15

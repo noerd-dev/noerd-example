@@ -1,0 +1,27 @@
+title: study_label_flashcards
+newLabel: study_label_new_flashcard
+component: flashcard-detail
+disableSearch: false
+redirectAction: ''
+columns:
+  - field: question
+    label: study_label_question
+    width: 30
+  - field: studyMaterial
+    label: study_label_book
+    width: 20
+    type: relation_link
+    modalComponent: study-material-detail
+    idField: study_material_id
+    idParam: studyMaterialId
+  - field: summary
+    label: study_label_summary
+    width: 20
+    type: relation_link
+    modalComponent: summary-detail
+    idField: summary_id
+    idParam: summaryId
+  - field: created_date
+    label: study_label_created_date
+    width: 15
+    type: date

@@ -1,0 +1,20 @@
+title: study_label_summaries
+newLabel: study_label_new_summary
+component: summary-detail
+disableSearch: false
+redirectAction: ''
+columns:
+  - field: title
+    label: study_label_title
+    width: 30
+  - field: studyMaterial
+    label: study_label_book
+    width: 30
+    type: relation_link
+    modalComponent: study-material-detail
+    idField: study_material_id
+    idParam: studyMaterialId
+  - field: created_at
+    label: study_label_created_at
+    width: 20
+    type: date

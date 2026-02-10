@@ -1,0 +1,3 @@
+[submodule "app-modules/study"]
+	path = app-modules/study
+	url = git@github.com:noerd-dev/study.git

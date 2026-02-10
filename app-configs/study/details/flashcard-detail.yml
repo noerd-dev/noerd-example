@@ -1,0 +1,30 @@
+title: study_label_flashcard
+description: ''
+fields:
+  - name: detailData.study_material_id
+    label: study_label_study_material
+    type: relation
+    colspan: 6
+    relationField: relationTitles.study_material_id
+    modalComponent: study-materials-list
+  - name: detailData.summary_id
+    label: study_label_summary
+    type: relation
+    colspan: 6
+    relationField: relationTitles.summary_id
+    modalComponent: summaries-list
+  - name: detailData.created_date
+    label: study_label_created_date
+    type: date
+    colspan: 12
+  - name: detailData.question
+    label: study_label_question
+    type: textarea
+    colspan: 12
+    rows: 3
+    required: true
+  - name: detailData.answer
+    label: study_label_answer
+    type: richText
+    colspan: 12
+    rows: 10

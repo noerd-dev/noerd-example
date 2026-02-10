@@ -1,0 +1,5 @@
+banners:
+  - type: warning
+    priority: 100
+    dismissible: false
+    component: demo-reset-countdown
