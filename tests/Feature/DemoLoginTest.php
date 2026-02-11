@@ -63,6 +63,7 @@ it('creates a tenant when none exists', function () {
 
     $studyApp = TenantApp::query()->where('name', 'STUDY')->first();
     expect($studyApp)->not->toBeNull();
+    expect($studyApp->route)->toBe('study.dashboard');
     expect($tenant->tenantApps()->where('tenant_app_id', $studyApp->id)->exists())->toBeTrue();
 
     expect(SetupLanguage::query()->count())->toBeGreaterThan(0);

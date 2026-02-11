@@ -11,7 +11,7 @@ return new class () extends Migration {
                 'title' => 'Study',
                 'name' => 'STUDY',
                 'icon' => 'study::icons.app',
-                'route' => 'study.study-materials',
+                'route' => 'study.dashboard',
                 'is_active' => true,
                 'created_at' => now(),
                 'updated_at' => now(),

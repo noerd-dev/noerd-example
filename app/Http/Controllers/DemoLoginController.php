@@ -83,7 +83,7 @@ class DemoLoginController extends Controller
             [
                 'title' => 'Study',
                 'icon' => 'study::icons.app',
-                'route' => 'study.study-dashboard',
+                'route' => 'study.dashboard',
                 'is_active' => true,
             ],
         );

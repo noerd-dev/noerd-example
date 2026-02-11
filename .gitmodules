@@ -1,3 +1,6 @@
 [submodule "app-modules/study"]
 	path = app-modules/study
 	url = git@github.com:noerd-dev/study.git
+[submodule "app-modules/noerd-backup"]
+	path = app-modules/noerd-backup
+	url = git@github.com:noerd-dev/noerd-backup.git
