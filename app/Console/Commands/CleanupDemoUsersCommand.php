@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Noerd\Models\User;
+use Noerd\Models\NoerdUser as User;
 
 class CleanupDemoUsersCommand extends Command
 {

@@ -5,10 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Noerd\Database\Seeders\SetupLanguageSeeder;
+use Noerd\Models\NoerdUser as User;
 use Noerd\Models\Profile;
 use Noerd\Models\Tenant;
 use Noerd\Models\TenantApp;
-use Noerd\Models\User;
 use Noerd\Models\UserSetting;
 use Nywerk\Study\Database\Seeders\StudyTestDataSeeder;
 

@@ -2,11 +2,11 @@
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
+use Noerd\Models\NoerdUser as User;
 use Noerd\Models\Profile;
 use Noerd\Models\SetupLanguage;
 use Noerd\Models\Tenant;
 use Noerd\Models\TenantApp;
-use Noerd\Models\User;
 use Noerd\Models\UserSetting;
 use Nywerk\Study\Models\StudyMaterial;
 
