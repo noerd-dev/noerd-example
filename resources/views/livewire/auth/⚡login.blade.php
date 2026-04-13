@@ -102,7 +102,7 @@ new #[Layout('noerd::layouts.auth')] class extends Component {
 
             <div class="mt-10">
                 <form wire:submit="login" class="space-y-6"
-                    @if($isDemo) x-init="setTimeout(() => $wire.login(), 2000)" @endif>
+                    @if($isDemo) x-init="setTimeout(() => $wire.login(), 4000)" @endif>
                     <!-- Email Address -->
                     <x-noerd::forms.input name="email" type="email" label="{{ __('Email address') }}" />
 
@@ -124,15 +124,15 @@ new #[Layout('noerd::layouts.auth')] class extends Component {
 
                     <!-- Submit Button -->
                     <div>
-                        <x-noerd::buttons.primary type="submit" class="w-full justify-center">
+                        <x-noerd::button type="submit" class="w-full justify-center">
                             {{ __('Log in') }}
-                        </x-noerd::buttons.primary>
+                        </x-noerd::button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="relative hidden w-0 flex-1 bg-black lg:block">
+    <div class="relative hidden w-0 flex-1 bg-black lg:block {{ $isDemo ? 'invisible' : '' }}">
         @if(config('noerd.branding.auth_background_image'))
             <img src="{{ config('noerd.branding.auth_background_image') }}" alt="" class="absolute inset-0 size-full object-cover" />
         @endif

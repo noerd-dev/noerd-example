@@ -5,6 +5,14 @@
   block_menus:
     - title: noerd_nav_administration
       navigations:
+        - title: noerd_nav_tenant
+          route: tenant
+          heroicon: building-office
+        - title: noerd_nav_apps
+          route: tenant-apps
+          heroicon: squares-2x2
+          superAdmin: true
+          config: noerd.features.multi_tenant
         - title: noerd_nav_users
           route: users
           heroicon: users
@@ -15,5 +23,12 @@
         - title: noerd_nav_languages
           route: setup-languages
           heroicon: language
+        - title: noerd_nav_currency_settings
+          route: noerd-settings
+          heroicon: currency-euro
+        - title: noerd_nav_collection_definitions
+          route: setup-collection-definitions
+          heroicon: rectangle-stack
+          config: noerd.collections.show_definitions_ui
     - title: noerd_nav_data_management
       dynamic: setup-collections

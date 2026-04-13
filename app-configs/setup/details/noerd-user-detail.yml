@@ -1,0 +1,9 @@
+title: noerd_label_user
+description: ''
+fields:
+  - name: detailData.email
+    label: noerd_label_email
+    type: text
+  - name: detailData.name
+    label: noerd_label_name
+    type: text

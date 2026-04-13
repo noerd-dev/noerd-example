@@ -13,3 +13,7 @@
 @source '../../vendor/noerd/noerd/resources/views/**/*.blade.php';
 @source '../../vendor/noerd/cms/resources/views/**/*.blade.php';
 @config '../../tailwind.config.js';
+
+@source '../../vendor/noerd/modal/resources/views';
+@source '../../vendor/noerd/noerd/resources/views';
+@config '../../tailwind.config.js';
