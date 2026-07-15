@@ -132,7 +132,7 @@ new #[Layout('noerd::layouts.auth')] class extends Component {
             </div>
         </div>
     </div>
-    <div class="relative hidden w-0 flex-1 bg-black lg:block {{ $isDemo ? 'invisible' : '' }}">
+    <div class="relative hidden w-0 flex-1 bg-black lg:block">
         @if(config('noerd.branding.auth_background_image'))
             <img src="{{ config('noerd.branding.auth_background_image') }}" alt="" class="absolute inset-0 size-full object-cover" />
         @endif

@@ -167,6 +167,17 @@ it('can log in with demo credentials', function () {
     $this->assertAuthenticatedAs($user);
 });
 
+it('shows the auth background panel in demo mode', function () {
+    $this->withSession([
+        'demo_email' => 'demo-test@demo.test',
+        'demo_password' => 'demo',
+    ]);
+
+    Livewire::test('auth.login')
+        ->assertSet('isDemo', true)
+        ->assertDontSee('invisible');
+});
+
 it('redirects without creating a new user when already logged in', function () {
     $user = User::forceCreate([
         'name' => 'Existing User',
