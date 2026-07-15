@@ -4,6 +4,7 @@
         "claude_code",
         "opencode"
     ],
+    "cloud": false,
     "guidelines": true,
     "herd_mcp": true,
     "mcp": true,
