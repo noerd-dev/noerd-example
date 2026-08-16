@@ -1,20 +1,21 @@
-title: study_label_summaries
+title: Summaries
 searchableColumns:
   - title
   - content
 actions:
-  - label: study_label_new_summary
+  - label: New Summary
     action: listAction
 disableSearch: false
 columns:
   - field: title
-    label: study_label_title
+    label: Title
   - field: studyMaterial
-    label: study_label_book
+    label: Book
     type: relation_link
-    modalComponent: study-material-detail
+    route: study.study-material.detail
+    modalComponent: study::study-material-detail
     idField: study_material_id
     idParam: modelId
   - field: created_at
-    label: study_label_created_at
+    label: Created At
     type: date

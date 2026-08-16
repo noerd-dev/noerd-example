@@ -1,26 +1,28 @@
-title: study_label_flashcards
+title: Flashcards
 searchableColumns:
   - question
   - answer
 actions:
-  - label: study_label_new_flashcard
+  - label: New Flashcard
     action: listAction
 disableSearch: false
 columns:
   - field: question
-    label: study_label_question
+    label: Question
   - field: studyMaterial
-    label: study_label_book
+    label: Book
     type: relation_link
-    modalComponent: study-material-detail
+    route: study.study-material.detail
+    modalComponent: study::study-material-detail
     idField: study_material_id
     idParam: modelId
   - field: summary
-    label: study_label_summary
+    label: Summary
     type: relation_link
-    modalComponent: summary-detail
+    route: study.summary.detail
+    modalComponent: study::summary-detail
     idField: summary_id
     idParam: modelId
   - field: created_date
-    label: study_label_created_date
+    label: Created Date
     type: date

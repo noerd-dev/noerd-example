@@ -3,23 +3,26 @@
   hidden: true
   route: study.dashboard
   block_menus:
-    - title: study_nav_dashboard
+    - title: Dashboard
       route: study.dashboard
       heroicon: home
-    - title: study_nav_learning
+    - title: Learning
       navigations:
-        - title: study_nav_study_materials
+        - title: Study Materials
           route: study.study-materials
           heroicon: book-open
-          newComponent: study-material-detail
-        - title: study_nav_summaries
+          newRoute: study.study-material.detail
+          newComponent: study::study-material-detail
+        - title: Summaries
           route: study.summaries
           heroicon: document-text
-          newComponent: summary-detail
-        - title: study_nav_flashcards
+          newRoute: study.summary.detail
+          newComponent: study::summary-detail
+        - title: Flashcards
           route: study.flashcards
           heroicon: rectangle-stack
-          newComponent: flashcard-detail
-        - title: study_nav_print_flashcards
+          newRoute: study.flashcard.detail
+          newComponent: study::flashcard-detail
+        - title: Print Flashcards
           route: study.flashcards-print
           heroicon: printer

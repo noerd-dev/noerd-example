@@ -103,7 +103,8 @@ it('runs seeders when data is missing', function () {
 
     Profile::create(['key' => 'USER', 'name' => 'User', 'tenant_id' => $tenant->id]);
 
-    expect(SetupLanguage::query()->count())->toBe(0);
+    // Since noerd 0.9, Tenant::created seeds the default languages (en, de).
+    expect(SetupLanguage::query()->count())->toBe(2);
     expect(StudyMaterial::withoutGlobalScopes()->count())->toBe(0);
 
     $this->get('/');
@@ -146,6 +147,22 @@ it('does not duplicate study app when already assigned', function () {
 
     expect(TenantApp::query()->where('name', 'STUDY')->count())->toBe(1);
     expect($tenant->tenantApps()->where('tenant_app_id', $studyApp->id)->count())->toBe(1);
+});
+
+it('renders the demo-aware login component on the login route', function () {
+    $tenant = Tenant::forceCreate([
+        'name' => 'Default',
+        'hash' => 'default-hash',
+    ]);
+
+    Profile::create(['key' => 'USER', 'name' => 'User', 'tenant_id' => $tenant->id]);
+
+    $this->get('/')->assertRedirect('/login');
+
+    $this->get('/login')
+        ->assertSuccessful()
+        ->assertSeeLivewire('auth.login')
+        ->assertSee('@demo.test');
 });
 
 it('can log in with demo credentials', function () {

@@ -1,33 +1,33 @@
-title: study_label_study_material
+title: Study Material
 description: ''
 tabs:
   - number: 1
-    label: study_tab_general
-  - label: study_tab_summaries
+    label: General
+  - label: Summaries
     component: summaries-list
     arguments:
       studyMaterialId: $modelId
     requiresId: true
-  - label: study_tab_flashcards
+  - label: Flashcards
     component: flashcards-list
     arguments:
       studyMaterialId: $modelId
     requiresId: true
 fields:
   - name: detailData.title
-    label: study_label_title
+    label: Title
     type: text
     colspan: 6
     required: true
   - name: detailData.author
-    label: study_label_author
+    label: Author
     type: text
     colspan: 6
   - name: detailData.page_count
-    label: study_label_page_count
+    label: Page Count
     type: number
     colspan: 6
   - name: detailData.publication_year
-    label: study_label_publication_year
+    label: Publication Year
     type: number
     colspan: 6

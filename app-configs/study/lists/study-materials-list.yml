@@ -1,20 +1,20 @@
-title: study_label_study_materials
+title: Study Materials
 searchableColumns:
   - title
   - author
 actions:
-  - label: study_label_new_study_material
-    action: listAction
+  - label: New Study Material
+    route: study.study-material.detail
 disableSearch: false
 columns:
   - field: title
-    label: study_label_title
+    label: Title
   - field: author
-    label: study_label_author
+    label: Author
   - field: page_count
-    label: study_label_page_count
+    label: Page Count
   - field: publication_year
-    label: study_label_publication_year
+    label: Publication Year
   - field: created_at
-    label: study_label_created_at
+    label: Created At
     type: date
