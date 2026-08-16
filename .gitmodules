@@ -4,3 +4,6 @@
 [submodule "app-modules/noerd-backup"]
 	path = app-modules/noerd-backup
 	url = git@github.com:noerd-dev/noerd-backup.git
+[submodule "app-modules/media"]
+	path = app-modules/media
+	url = git@github.com:noerd-dev/media.git

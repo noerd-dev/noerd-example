@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
+use Noerd\Media\Models\Media;
 use Noerd\Models\NoerdUser as User;
 use Noerd\Models\Profile;
 use Noerd\Models\SetupLanguage;
@@ -77,6 +79,31 @@ it('creates a tenant when none exists', function () {
     $setting = UserSetting::query()->where('user_id', $user->id)->first();
     expect($setting)->not->toBeNull()
         ->and($setting->selected_tenant_id)->toBe($tenant->id);
+});
+
+it('assigns the media app and seeds media data for a new tenant', function () {
+    Storage::fake(config('media.disk'));
+
+    $this->get('/')->assertRedirect('/login');
+
+    $tenant = Tenant::query()->firstOrFail();
+    $mediaApp = TenantApp::query()->where('name', 'MEDIA')->first();
+
+    expect($mediaApp)->not->toBeNull()
+        ->and($mediaApp->route)->toBe('media.dashboard')
+        ->and($tenant->tenantApps()->where('tenant_app_id', $mediaApp->id)->exists())->toBeTrue()
+        ->and(Media::withoutGlobalScopes()->count())->toBeGreaterThan(0);
+});
+
+it('does not duplicate seeded media on repeated visits', function () {
+    Storage::fake(config('media.disk'));
+
+    $this->get('/');
+    $mediaCount = Media::withoutGlobalScopes()->count();
+
+    $this->get('/');
+
+    expect(Media::withoutGlobalScopes()->count())->toBe($mediaCount);
 });
 
 it('assigns study app to existing tenant', function () {

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Database\Seeders\MediaTestDataSeeder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Noerd\Database\Seeders\SetupLanguageSeeder;
+use Noerd\Media\Models\Media;
 use Noerd\Models\NoerdUser as User;
 use Noerd\Models\Profile;
 use Noerd\Models\Tenant;
@@ -35,6 +37,7 @@ class DemoLoginController extends Controller
         }
 
         $this->ensureStudyAppInstalled($tenant);
+        $this->ensureMediaAppInstalled($tenant);
         $this->ensureSeedersHaveRun();
 
         $profile = Profile::query()
@@ -74,6 +77,10 @@ class DemoLoginController extends Controller
         if (StudyMaterial::withoutGlobalScopes()->count() === 0) {
             (new StudyTestDataSeeder)->run();
         }
+
+        if (Media::withoutGlobalScopes()->count() === 0) {
+            app(MediaTestDataSeeder::class)->run();
+        }
     }
 
     private function ensureStudyAppInstalled(Tenant $tenant): void
@@ -90,6 +97,23 @@ class DemoLoginController extends Controller
 
         if (! $tenant->tenantApps()->where('tenant_app_id', $studyApp->id)->exists()) {
             $tenant->tenantApps()->attach($studyApp->id);
+        }
+    }
+
+    private function ensureMediaAppInstalled(Tenant $tenant): void
+    {
+        $mediaApp = TenantApp::query()->firstOrCreate(
+            ['name' => 'MEDIA'],
+            [
+                'title' => 'Media',
+                'icon' => 'media::icons.app',
+                'route' => 'media.dashboard',
+                'is_active' => true,
+            ],
+        );
+
+        if (! $tenant->tenantApps()->where('tenant_app_id', $mediaApp->id)->exists()) {
+            $tenant->tenantApps()->attach($mediaApp->id);
         }
     }
 }

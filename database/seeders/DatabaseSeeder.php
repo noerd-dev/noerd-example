@@ -39,8 +39,21 @@ class DatabaseSeeder extends Seeder
 
         $tenant->tenantApps()->attach($studyApp->id);
 
+        $mediaApp = TenantApp::query()->firstOrCreate(
+            ['name' => 'MEDIA'],
+            [
+                'title' => 'Media',
+                'icon' => 'media::icons.app',
+                'route' => 'media.dashboard',
+                'is_active' => true,
+            ],
+        );
+
+        $tenant->tenantApps()->attach($mediaApp->id);
+
         $this->call(SetupLanguageSeeder::class);
         $this->call(StudyTestDataSeeder::class);
+        $this->call(MediaTestDataSeeder::class);
 
         $profile = Profile::query()
             ->where('tenant_id', $tenant->id)

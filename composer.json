@@ -12,6 +12,7 @@
         "php": "^8.2",
         "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0",
+        "noerd/media": "^0.2.5",
         "noerd/noerd": "^0.9",
         "noerd/study": "^0.3.7"
     },
