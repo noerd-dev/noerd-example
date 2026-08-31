@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Database\Seeders\MediaTestDataSeeder;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Noerd\Database\Seeders\SetupLanguageSeeder;
+use Noerd\Enums\Profile;
 use Noerd\Media\Models\Media;
 use Noerd\Models\NoerdUser as User;
-use Noerd\Models\Profile;
 use Noerd\Models\Tenant;
 use Noerd\Models\TenantApp;
 use Noerd\Models\UserSetting;
@@ -21,7 +22,7 @@ class DemoLoginController extends Controller
     public function __invoke(): RedirectResponse
     {
         if (Auth::check()) {
-            return redirect('/noerd-home');
+            return redirect()->route('noerd.apps');
         }
 
         $tenant = Tenant::query()->first();
@@ -31,19 +32,11 @@ class DemoLoginController extends Controller
             $tenant->name = 'Default';
             $tenant->uuid = Str::uuid()->toString();
             $tenant->save();
-
-            Profile::create(['tenant_id' => $tenant->id, 'key' => 'USER', 'name' => 'User']);
-            Profile::create(['tenant_id' => $tenant->id, 'key' => 'ADMIN', 'name' => 'Admin']);
         }
 
         $this->ensureStudyAppInstalled($tenant);
         $this->ensureMediaAppInstalled($tenant);
         $this->ensureSeedersHaveRun();
-
-        $profile = Profile::query()
-            ->where('tenant_id', $tenant->id)
-            ->where('key', 'USER')
-            ->firstOrFail();
 
         $password = 'demo';
 
@@ -56,7 +49,7 @@ class DemoLoginController extends Controller
             'super_admin' => false,
         ]);
 
-        $user->tenants()->attach($tenant->id, ['profile_id' => $profile->id]);
+        $user->tenants()->attach($tenant->id, ['profile_key' => Profile::User->value]);
 
         UserSetting::create([
             'user_id' => $user->id,
@@ -80,6 +73,10 @@ class DemoLoginController extends Controller
 
         if (Media::withoutGlobalScopes()->count() === 0) {
             app(MediaTestDataSeeder::class)->run();
+
+            // Seeded media is served through the public/storage symlink, which
+            // does not exist on a freshly deployed environment.
+            Artisan::call('storage:link');
         }
     }
 

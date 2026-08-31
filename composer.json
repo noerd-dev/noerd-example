@@ -12,9 +12,9 @@
         "php": "^8.2",
         "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0",
-        "noerd/media": "^0.2.5",
-        "noerd/noerd": "^0.9",
-        "noerd/study": "^0.3.7"
+        "noerd/media": "^0.3.3",
+        "noerd/noerd": "^0.13",
+        "noerd/study": "^0.3.13"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -45,6 +45,7 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
             "@php artisan migrate --force",
+            "@php artisan storage:link",
             "npm install",
             "npm run build"
         ],

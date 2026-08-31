@@ -3,9 +3,9 @@
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
+use Noerd\Enums\Profile;
 use Noerd\Media\Models\Media;
 use Noerd\Models\NoerdUser as User;
-use Noerd\Models\Profile;
 use Noerd\Models\SetupLanguage;
 use Noerd\Models\Tenant;
 use Noerd\Models\TenantApp;
@@ -19,8 +19,6 @@ it('creates a demo user and redirects to login with flash data', function () {
         'name' => 'Default',
         'hash' => 'default-hash',
     ]);
-
-    $profile = Profile::create(['key' => 'USER', 'name' => 'User', 'tenant_id' => $tenant->id]);
 
     $response = $this->get('/');
 
@@ -38,6 +36,7 @@ it('creates a demo user and redirects to login with flash data', function () {
 
     expect($user->tenants)->toHaveCount(1);
     expect($user->tenants->first()->id)->toBe($tenant->id);
+    expect($user->tenants->first()->pivot->profile_key)->toBe(Profile::User->value);
 
     $setting = UserSetting::query()->where('user_id', $user->id)->first();
     expect($setting)->not->toBeNull()
@@ -59,10 +58,6 @@ it('creates a tenant when none exists', function () {
     expect($tenant)->not->toBeNull()
         ->and($tenant->name)->toBe('Default');
 
-    $profiles = Profile::query()->where('tenant_id', $tenant->id)->pluck('key')->toArray();
-    expect($profiles)->toContain('USER')
-        ->and($profiles)->toContain('ADMIN');
-
     $studyApp = TenantApp::query()->where('name', 'STUDY')->first();
     expect($studyApp)->not->toBeNull();
     expect($studyApp->route)->toBe('study.dashboard');
@@ -75,6 +70,7 @@ it('creates a tenant when none exists', function () {
     expect($user)->not->toBeNull();
     expect($user->tenants)->toHaveCount(1);
     expect($user->tenants->first()->id)->toBe($tenant->id);
+    expect($user->tenants->first()->pivot->profile_key)->toBe(Profile::User->value);
 
     $setting = UserSetting::query()->where('user_id', $user->id)->first();
     expect($setting)->not->toBeNull()
@@ -112,8 +108,6 @@ it('assigns study app to existing tenant', function () {
         'hash' => 'default-hash',
     ]);
 
-    Profile::create(['key' => 'USER', 'name' => 'User', 'tenant_id' => $tenant->id]);
-
     $studyApp = TenantApp::query()->where('name', 'STUDY')->first();
     expect($tenant->tenantApps()->where('tenant_app_id', $studyApp->id)->exists())->toBeFalse();
 
@@ -127,8 +121,6 @@ it('runs seeders when data is missing', function () {
         'name' => 'Default',
         'hash' => 'default-hash',
     ]);
-
-    Profile::create(['key' => 'USER', 'name' => 'User', 'tenant_id' => $tenant->id]);
 
     // Since noerd 0.9, Tenant::created seeds the default languages (en, de).
     expect(SetupLanguage::query()->count())->toBe(2);
@@ -145,8 +137,6 @@ it('does not duplicate seeded data on repeated visits', function () {
         'name' => 'Default',
         'hash' => 'default-hash',
     ]);
-
-    Profile::create(['key' => 'USER', 'name' => 'User', 'tenant_id' => $tenant->id]);
 
     $this->get('/');
 
@@ -165,8 +155,6 @@ it('does not duplicate study app when already assigned', function () {
         'hash' => 'default-hash',
     ]);
 
-    Profile::create(['key' => 'USER', 'name' => 'User', 'tenant_id' => $tenant->id]);
-
     $studyApp = TenantApp::query()->where('name', 'STUDY')->firstOrFail();
     $tenant->tenantApps()->attach($studyApp->id);
 
@@ -181,8 +169,6 @@ it('renders the demo-aware login component on the login route', function () {
         'name' => 'Default',
         'hash' => 'default-hash',
     ]);
-
-    Profile::create(['key' => 'USER', 'name' => 'User', 'tenant_id' => $tenant->id]);
 
     $this->get('/')->assertRedirect('/login');
 
@@ -206,7 +192,7 @@ it('can log in with demo credentials', function () {
         ->set('email', $user->email)
         ->set('password', 'demo')
         ->call('login')
-        ->assertRedirect(route('dashboard', absolute: false));
+        ->assertRedirect(route('noerd.apps', absolute: false));
 
     $this->assertAuthenticatedAs($user);
 });
@@ -234,7 +220,7 @@ it('redirects without creating a new user when already logged in', function () {
 
     $response = $this->actingAs($user)->get('/');
 
-    $response->assertRedirect('/noerd-home');
+    $response->assertRedirect(route('noerd.apps'));
 
     expect(User::query()->where('is_demo', true)->count())->toBe(0);
 });

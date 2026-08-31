@@ -1,5 +1,7 @@
 <?php
 
+use Tests\TestCase;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -11,7 +13,14 @@
 |
 */
 
-pest()->extend(Tests\TestCase::class)
+/*
+ * noerd ships its global test helpers (validDetailPayload(), requiredLayoutFields(),
+ * assertModuleDependenciesDeclared(), …) outside the production autoload, so a host
+ * project has to require them itself for the module suites under app-modules/.
+ */
+require_once __DIR__.'/../vendor/noerd/noerd/tests/helpers.php';
+
+pest()->extend(TestCase::class)
  // ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->in('Feature');
 
