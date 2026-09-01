@@ -1,0 +1,16 @@
+title: Customers
+model: Noerd\Customer\Models\Customer
+actions:
+  - label: New Customer
+    route: customer.detail
+disableSearch: false
+columns:
+  - field: name
+    label: Name
+    type: text
+  - field: company_name
+    label: Company
+  - field: email
+    label: Email
+  - field: phone
+    label: Phone

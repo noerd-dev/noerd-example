@@ -35,7 +35,7 @@ function runRepairMigration(): void
 }
 
 it('adds the missing tenant_id column to a legacy setup_languages table', function (): void {
-    $tenant = Tenant::forceCreate(['name' => 'Default', 'hash' => 'default-hash']);
+    $tenant = Tenant::factory()->create(['name' => 'Default']);
 
     createLegacySetupLanguagesTable();
 
@@ -51,7 +51,7 @@ it('adds the missing tenant_id column to a legacy setup_languages table', functi
 });
 
 it('replaces the legacy unique index on code with a tenant scoped one', function (): void {
-    Tenant::forceCreate(['name' => 'Default', 'hash' => 'default-hash']);
+    Tenant::factory()->create(['name' => 'Default']);
 
     createLegacySetupLanguagesTable();
 
@@ -80,7 +80,7 @@ it('removes unassignable language rows when no tenant exists', function (): void
 });
 
 it('leaves an already consolidated schema untouched when run again', function (): void {
-    Tenant::forceCreate(['name' => 'Default', 'hash' => 'default-hash']);
+    Tenant::factory()->create(['name' => 'Default']);
 
     createLegacySetupLanguagesTable();
     runRepairMigration();

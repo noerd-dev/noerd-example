@@ -1,0 +1,13 @@
+-
+  title: Customer
+  name: customer
+  hidden: false
+  route: customer
+  block_menus:
+    -
+      title: Customers
+      navigations:
+        -
+          title: Customers
+          route: customers
+          heroicon: users

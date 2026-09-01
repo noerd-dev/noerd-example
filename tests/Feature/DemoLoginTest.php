@@ -15,10 +15,7 @@ use Nywerk\Study\Models\StudyMaterial;
 uses(RefreshDatabase::class);
 
 it('creates a demo user and redirects to login with flash data', function () {
-    $tenant = Tenant::forceCreate([
-        'name' => 'Default',
-        'hash' => 'default-hash',
-    ]);
+    $tenant = Tenant::factory()->create(['name' => 'Default']);
 
     $response = $this->get('/');
 
@@ -103,10 +100,7 @@ it('does not duplicate seeded media on repeated visits', function () {
 });
 
 it('assigns study app to existing tenant', function () {
-    $tenant = Tenant::forceCreate([
-        'name' => 'Default',
-        'hash' => 'default-hash',
-    ]);
+    $tenant = Tenant::factory()->create(['name' => 'Default']);
 
     $studyApp = TenantApp::query()->where('name', 'STUDY')->first();
     expect($tenant->tenantApps()->where('tenant_app_id', $studyApp->id)->exists())->toBeFalse();
@@ -117,10 +111,7 @@ it('assigns study app to existing tenant', function () {
 });
 
 it('runs seeders when data is missing', function () {
-    $tenant = Tenant::forceCreate([
-        'name' => 'Default',
-        'hash' => 'default-hash',
-    ]);
+    $tenant = Tenant::factory()->create(['name' => 'Default']);
 
     // Since noerd 0.9, Tenant::created seeds the default languages (en, de).
     expect(SetupLanguage::query()->count())->toBe(2);
@@ -133,10 +124,7 @@ it('runs seeders when data is missing', function () {
 });
 
 it('does not duplicate seeded data on repeated visits', function () {
-    $tenant = Tenant::forceCreate([
-        'name' => 'Default',
-        'hash' => 'default-hash',
-    ]);
+    $tenant = Tenant::factory()->create(['name' => 'Default']);
 
     $this->get('/');
 
@@ -150,10 +138,7 @@ it('does not duplicate seeded data on repeated visits', function () {
 });
 
 it('does not duplicate study app when already assigned', function () {
-    $tenant = Tenant::forceCreate([
-        'name' => 'Default',
-        'hash' => 'default-hash',
-    ]);
+    $tenant = Tenant::factory()->create(['name' => 'Default']);
 
     $studyApp = TenantApp::query()->where('name', 'STUDY')->firstOrFail();
     $tenant->tenantApps()->attach($studyApp->id);
@@ -165,10 +150,7 @@ it('does not duplicate study app when already assigned', function () {
 });
 
 it('renders the demo-aware login component on the login route', function () {
-    $tenant = Tenant::forceCreate([
-        'name' => 'Default',
-        'hash' => 'default-hash',
-    ]);
+    $tenant = Tenant::factory()->create(['name' => 'Default']);
 
     $this->get('/')->assertRedirect('/login');
 

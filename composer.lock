@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6fa2f49b92ada1b069d6e0a7b7f5343",
+    "content-hash": "29ee4c79f0c90362e5516757297a1870",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -1432,16 +1432,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v13.29.0",
+            "version": "v13.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "6e2c363716964d8238cee7097b258119a984f0cf"
+                "reference": "9c008e7c9a64a8ea6d6e4f1683bd569acc10bf9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/6e2c363716964d8238cee7097b258119a984f0cf",
-                "reference": "6e2c363716964d8238cee7097b258119a984f0cf",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/9c008e7c9a64a8ea6d6e4f1683bd569acc10bf9e",
+                "reference": "9c008e7c9a64a8ea6d6e4f1683bd569acc10bf9e",
                 "shasum": ""
             },
             "require": {
@@ -1655,7 +1655,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-08-25T20:57:16+00:00"
+            "time": "2026-09-01T13:19:00+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -2972,18 +2972,64 @@
             "time": "2026-07-04T14:30:18+00:00"
         },
         {
+            "name": "noerd/customer",
+            "version": "v0.3.25",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/noerd-dev/customer.git",
+                "reference": "d179798bfadc710efa100680a66c238f848fd838"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/noerd-dev/customer/zipball/d179798bfadc710efa100680a66c238f848fd838",
+                "reference": "d179798bfadc710efa100680a66c238f848fd838",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^12.0 || ^13.0",
+                "noerd/noerd": "^0.10.10 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0",
+                "owen-it/laravel-auditing": "^14.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Noerd\\Customer\\Providers\\CustomerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Noerd\\Customer\\": "src/",
+                    "Noerd\\Customer\\Tests\\": "tests/",
+                    "Noerd\\Customer\\Database\\Seeders\\": "database/seeders/",
+                    "Noerd\\Customer\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Customer module for noerd platform",
+            "support": {
+                "issues": "https://github.com/noerd-dev/customer/issues",
+                "source": "https://github.com/noerd-dev/customer/tree/v0.3.25"
+            },
+            "time": "2026-09-01T21:00:34+00:00"
+        },
+        {
             "name": "noerd/media",
-            "version": "v0.3.3",
+            "version": "v0.3.4",
             "dist": {
                 "type": "path",
                 "url": "app-modules/media",
-                "reference": "63625857235d904662f4463a267b4860a4283fd1"
+                "reference": "d6d016bfddaa1303a6b5f0c95906aeb770ca9258"
             },
             "require": {
                 "barryvdh/laravel-dompdf": "^3.1",
                 "intervention/image": "^3.11",
                 "laravel/framework": "^12.0 || ^13.0",
-                "noerd/noerd": "^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0"
+                "noerd/noerd": "^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0"
             },
             "suggest": {
                 "ext-imagick": "Legacy fallback for PDF thumbnail rasterization. Not needed when the Ghostscript binary (gs) is installed."
@@ -3015,16 +3061,16 @@
         },
         {
             "name": "noerd/modal",
-            "version": "v0.3.25",
+            "version": "v0.3.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noerd-dev/modal.git",
-                "reference": "f0ed0a98e8aa511dab158f713d00e8f22d978348"
+                "reference": "6140dd31b28b20ba0576fd1ee492ae9c9739cf8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noerd-dev/modal/zipball/f0ed0a98e8aa511dab158f713d00e8f22d978348",
-                "reference": "f0ed0a98e8aa511dab158f713d00e8f22d978348",
+                "url": "https://api.github.com/repos/noerd-dev/modal/zipball/6140dd31b28b20ba0576fd1ee492ae9c9739cf8c",
+                "reference": "6140dd31b28b20ba0576fd1ee492ae9c9739cf8c",
                 "shasum": ""
             },
             "require": {
@@ -3052,22 +3098,22 @@
             "description": "Open each livewire component in a modal window.",
             "support": {
                 "issues": "https://github.com/noerd-dev/modal/issues",
-                "source": "https://github.com/noerd-dev/modal/tree/v0.3.25"
+                "source": "https://github.com/noerd-dev/modal/tree/v0.3.27"
             },
-            "time": "2026-08-29T10:07:05+00:00"
+            "time": "2026-09-01T12:29:51+00:00"
         },
         {
             "name": "noerd/noerd",
-            "version": "v0.13.1",
+            "version": "v0.14.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noerd-dev/noerd.git",
-                "reference": "d75635695329a548a122179fcd8d300d3e92ac72"
+                "reference": "976db64423dd9b931c9bd746b7902db198d23f1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noerd-dev/noerd/zipball/d75635695329a548a122179fcd8d300d3e92ac72",
-                "reference": "d75635695329a548a122179fcd8d300d3e92ac72",
+                "url": "https://api.github.com/repos/noerd-dev/noerd/zipball/976db64423dd9b931c9bd746b7902db198d23f1e",
+                "reference": "976db64423dd9b931c9bd746b7902db198d23f1e",
                 "shasum": ""
             },
             "require": {
@@ -3123,22 +3169,22 @@
             ],
             "support": {
                 "issues": "https://github.com/noerd-dev/noerd/issues",
-                "source": "https://github.com/noerd-dev/noerd/tree/v0.13.1"
+                "source": "https://github.com/noerd-dev/noerd/tree/v0.14.6"
             },
-            "time": "2026-08-31T21:58:34+00:00"
+            "time": "2026-09-01T20:34:23+00:00"
         },
         {
             "name": "noerd/study",
-            "version": "v0.3.13",
+            "version": "v0.3.14",
             "dist": {
                 "type": "path",
                 "url": "app-modules/study",
-                "reference": "7296d057824b8d1d3dbb5a9053dbba6ebd5793a5"
+                "reference": "4f9607108766df875703c2e0ddd76923c2103b6b"
             },
             "require": {
                 "barryvdh/laravel-dompdf": "^3.1",
                 "laravel/framework": "^12.0 || ^13.0",
-                "noerd/noerd": "^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0"
+                "noerd/noerd": "^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0"
             },
             "type": "library",
             "extra": {
@@ -3251,6 +3297,90 @@
                 }
             ],
             "time": "2026-02-16T23:10:27+00:00"
+        },
+        {
+            "name": "owen-it/laravel-auditing",
+            "version": "v14.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/owen-it/laravel-auditing.git",
+                "reference": "31b73b73e73888bc6a7c307805fb22f7d653639f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/owen-it/laravel-auditing/zipball/31b73b73e73888bc6a7c307805fb22f7d653639f",
+                "reference": "31b73b73e73888bc6a7c307805fb22f7d653639f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/console": "^11.0|^12.0|^13.0",
+                "illuminate/database": "^11.0|^12.0|^13.0",
+                "illuminate/filesystem": "^11.0|^12.0|^13.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5.1",
+                "orchestra/testbench": "^9.0|^10.0|^11.0",
+                "phpunit/phpunit": "^11.5|^12.5.12"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "OwenIt\\Auditing\\AuditingServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "v14-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OwenIt\\Auditing\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antério Vieira",
+                    "email": "anteriovieira@gmail.com"
+                },
+                {
+                    "name": "Raphael França",
+                    "email": "raphaelfrancabsb@gmail.com"
+                },
+                {
+                    "name": "Morten D. Hansen",
+                    "email": "morten@visia.dk"
+                }
+            ],
+            "description": "Audit changes of your Eloquent models in Laravel",
+            "homepage": "https://laravel-auditing.com",
+            "keywords": [
+                "Accountability",
+                "Audit",
+                "auditing",
+                "changes",
+                "eloquent",
+                "history",
+                "laravel",
+                "log",
+                "logging",
+                "lumen",
+                "observer",
+                "record",
+                "revision",
+                "tracking"
+            ],
+            "support": {
+                "issues": "https://github.com/owen-it/laravel-auditing/issues",
+                "source": "https://github.com/owen-it/laravel-auditing"
+            },
+            "time": "2026-06-20T14:28:21+00:00"
         },
         {
             "name": "phpoption/phpoption",

@@ -6,7 +6,7 @@ use Noerd\Models\Tenant;
 uses(RefreshDatabase::class);
 
 test('the application redirects from root', function () {
-    Tenant::forceCreate(['id' => 1, 'name' => 'Default', 'hash' => 'default-hash']);
+    Tenant::factory()->create(['id' => 1, 'name' => 'Default']);
 
     $response = $this->get('/');
 
