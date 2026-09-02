@@ -19,7 +19,7 @@ it('creates a demo user and redirects to login with flash data', function () {
 
     $response = $this->get('/');
 
-    $response->assertRedirect('/login');
+    $response->assertRedirect('/demo-login');
     $this->assertGuest();
 
     $user = User::query()->where('is_demo', true)->first();
@@ -49,7 +49,7 @@ it('creates a tenant when none exists', function () {
 
     $response = $this->get('/');
 
-    $response->assertRedirect('/login');
+    $response->assertRedirect('/demo-login');
 
     $tenant = Tenant::query()->first();
     expect($tenant)->not->toBeNull()
@@ -77,7 +77,7 @@ it('creates a tenant when none exists', function () {
 it('assigns the media app and seeds media data for a new tenant', function () {
     Storage::fake(config('media.disk'));
 
-    $this->get('/')->assertRedirect('/login');
+    $this->get('/')->assertRedirect('/demo-login');
 
     $tenant = Tenant::query()->firstOrFail();
     $mediaApp = TenantApp::query()->where('name', 'MEDIA')->first();
@@ -152,12 +152,19 @@ it('does not duplicate study app when already assigned', function () {
 it('renders the demo-aware login component on the login route', function () {
     $tenant = Tenant::factory()->create(['name' => 'Default']);
 
-    $this->get('/')->assertRedirect('/login');
+    $this->get('/')->assertRedirect('/demo-login');
 
-    $this->get('/login')
+    $this->get('/demo-login')
         ->assertSuccessful()
         ->assertSeeLivewire('auth.login')
         ->assertSee('@demo.test');
+});
+
+// noerd registers an ANY `/login` route that redirects to `/noerd/login`. With
+// cached routes that redirect wins over a same-path override, so the demo login
+// must keep its own path or the prefilled credentials are lost.
+it('does not serve the demo login from the path noerd redirects away', function () {
+    expect(route('login', absolute: false))->toBe('/demo-login');
 });
 
 it('can log in with demo credentials', function () {

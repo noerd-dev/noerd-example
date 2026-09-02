@@ -60,7 +60,7 @@ class DemoLoginController extends Controller
         session()->flash('demo_email', $user->email);
         session()->flash('demo_password', $password);
 
-        return redirect('/login');
+        return redirect()->route('login');
     }
 
     private function ensureSeedersHaveRun(): void

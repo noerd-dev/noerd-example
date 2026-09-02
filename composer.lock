@@ -1432,16 +1432,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v13.30.0",
+            "version": "v13.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9c008e7c9a64a8ea6d6e4f1683bd569acc10bf9e"
+                "reference": "718d17db56861e0a49f644217c8853dab1bff8ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9c008e7c9a64a8ea6d6e4f1683bd569acc10bf9e",
-                "reference": "9c008e7c9a64a8ea6d6e4f1683bd569acc10bf9e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/718d17db56861e0a49f644217c8853dab1bff8ce",
+                "reference": "718d17db56861e0a49f644217c8853dab1bff8ce",
                 "shasum": ""
             },
             "require": {
@@ -1655,7 +1655,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-09-01T13:19:00+00:00"
+            "time": "2026-09-01T21:42:30+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -2037,16 +2037,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.35.3",
+            "version": "3.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "5fc8404762179ae514678487b23494fd69b2309c"
+                "reference": "f7fb152932f30072d573510cbd4dd657d6475b25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/5fc8404762179ae514678487b23494fd69b2309c",
-                "reference": "5fc8404762179ae514678487b23494fd69b2309c",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f7fb152932f30072d573510cbd4dd657d6475b25",
+                "reference": "f7fb152932f30072d573510cbd4dd657d6475b25",
                 "shasum": ""
             },
             "require": {
@@ -2114,9 +2114,9 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.35.3"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.36.0"
             },
-            "time": "2026-08-22T12:55:54+00:00"
+            "time": "2026-09-02T08:00:27+00:00"
         },
         {
             "name": "league/flysystem-local",
@@ -2550,16 +2550,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "b321dd6749f0bf7189444158a3ce785cc16d69b0"
+                "reference": "147f303310f06334f03f409e49d7ad1e275ff05a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/b321dd6749f0bf7189444158a3ce785cc16d69b0",
-                "reference": "b321dd6749f0bf7189444158a3ce785cc16d69b0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/147f303310f06334f03f409e49d7ad1e275ff05a",
+                "reference": "147f303310f06334f03f409e49d7ad1e275ff05a",
                 "shasum": ""
             },
             "require": {
@@ -2637,7 +2637,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/3.10.0"
+                "source": "https://github.com/Seldaek/monolog/tree/3.11.0"
             },
             "funding": [
                 {
@@ -2649,7 +2649,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-02T08:56:05+00:00"
+            "time": "2026-09-02T12:39:56+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -2973,16 +2973,16 @@
         },
         {
             "name": "noerd/customer",
-            "version": "v0.3.25",
+            "version": "v0.3.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noerd-dev/customer.git",
-                "reference": "d179798bfadc710efa100680a66c238f848fd838"
+                "reference": "094d6d702c163344c05d016bf66a89e25d6ea218"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noerd-dev/customer/zipball/d179798bfadc710efa100680a66c238f848fd838",
-                "reference": "d179798bfadc710efa100680a66c238f848fd838",
+                "url": "https://api.github.com/repos/noerd-dev/customer/zipball/094d6d702c163344c05d016bf66a89e25d6ea218",
+                "reference": "094d6d702c163344c05d016bf66a89e25d6ea218",
                 "shasum": ""
             },
             "require": {
@@ -3013,9 +3013,9 @@
             "description": "Customer module for noerd platform",
             "support": {
                 "issues": "https://github.com/noerd-dev/customer/issues",
-                "source": "https://github.com/noerd-dev/customer/tree/v0.3.25"
+                "source": "https://github.com/noerd-dev/customer/tree/v0.3.26"
             },
-            "time": "2026-09-01T21:00:34+00:00"
+            "time": "2026-09-02T21:28:33+00:00"
         },
         {
             "name": "noerd/media",
@@ -3061,16 +3061,16 @@
         },
         {
             "name": "noerd/modal",
-            "version": "v0.3.27",
+            "version": "v0.3.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noerd-dev/modal.git",
-                "reference": "6140dd31b28b20ba0576fd1ee492ae9c9739cf8c"
+                "reference": "24bf246ecadcc63a8d7ab83ef7e5ebdc63b9835a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noerd-dev/modal/zipball/6140dd31b28b20ba0576fd1ee492ae9c9739cf8c",
-                "reference": "6140dd31b28b20ba0576fd1ee492ae9c9739cf8c",
+                "url": "https://api.github.com/repos/noerd-dev/modal/zipball/24bf246ecadcc63a8d7ab83ef7e5ebdc63b9835a",
+                "reference": "24bf246ecadcc63a8d7ab83ef7e5ebdc63b9835a",
                 "shasum": ""
             },
             "require": {
@@ -3098,22 +3098,22 @@
             "description": "Open each livewire component in a modal window.",
             "support": {
                 "issues": "https://github.com/noerd-dev/modal/issues",
-                "source": "https://github.com/noerd-dev/modal/tree/v0.3.27"
+                "source": "https://github.com/noerd-dev/modal/tree/v0.3.28"
             },
-            "time": "2026-09-01T12:29:51+00:00"
+            "time": "2026-09-02T21:28:48+00:00"
         },
         {
             "name": "noerd/noerd",
-            "version": "v0.14.6",
+            "version": "v0.14.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noerd-dev/noerd.git",
-                "reference": "976db64423dd9b931c9bd746b7902db198d23f1e"
+                "reference": "27b9bdfe775283d2ce0efb77567d6e0b381f1d34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noerd-dev/noerd/zipball/976db64423dd9b931c9bd746b7902db198d23f1e",
-                "reference": "976db64423dd9b931c9bd746b7902db198d23f1e",
+                "url": "https://api.github.com/repos/noerd-dev/noerd/zipball/27b9bdfe775283d2ce0efb77567d6e0b381f1d34",
+                "reference": "27b9bdfe775283d2ce0efb77567d6e0b381f1d34",
                 "shasum": ""
             },
             "require": {
@@ -3130,6 +3130,9 @@
                 "laravel/pint": "^1.18",
                 "orchestra/testbench": "^10.6 || ^11.1",
                 "pestphp/pest": "^4.0"
+            },
+            "suggest": {
+                "owen-it/laravel-auditing": "Required for the activity log modal (noerd::audit-modal) of auditable models."
             },
             "type": "library",
             "extra": {
@@ -3169,9 +3172,9 @@
             ],
             "support": {
                 "issues": "https://github.com/noerd-dev/noerd/issues",
-                "source": "https://github.com/noerd-dev/noerd/tree/v0.14.6"
+                "source": "https://github.com/noerd-dev/noerd/tree/v0.14.9"
             },
-            "time": "2026-09-01T20:34:23+00:00"
+            "time": "2026-09-02T21:28:52+00:00"
         },
         {
             "name": "noerd/study",
