@@ -2,11 +2,10 @@
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
+use Noerd\Customer\Models\Customer;
 use Noerd\Enums\Profile;
 use Noerd\Helpers\NoerdAuth;
-use Noerd\Media\Models\Media;
 use Noerd\Models\NoerdUser as User;
 use Noerd\Models\SetupLanguage;
 use Noerd\Models\Tenant;
@@ -76,29 +75,25 @@ it('creates a tenant when none exists', function () {
         ->and($setting->selected_tenant_id)->toBe($tenant->id);
 });
 
-it('assigns the media app and seeds media data for a new tenant', function () {
-    Storage::fake(config('media.disk'));
-
+it('assigns the customer app and seeds customer data for a new tenant', function () {
     $this->get('/')->assertRedirect('/demo-login');
 
     $tenant = Tenant::query()->firstOrFail();
-    $mediaApp = TenantApp::query()->where('name', 'MEDIA')->first();
+    $customerApp = TenantApp::query()->where('name', 'CUSTOMER')->first();
 
-    expect($mediaApp)->not->toBeNull()
-        ->and($mediaApp->route)->toBe('media.dashboard')
-        ->and($tenant->tenantApps()->where('tenant_app_id', $mediaApp->id)->exists())->toBeTrue()
-        ->and(Media::withoutGlobalScopes()->count())->toBeGreaterThan(0);
+    expect($customerApp)->not->toBeNull()
+        ->and($customerApp->route)->toBe('customers')
+        ->and($tenant->tenantApps()->where('tenant_app_id', $customerApp->id)->exists())->toBeTrue()
+        ->and(Customer::withoutGlobalScopes()->count())->toBeGreaterThan(0);
 });
 
-it('does not duplicate seeded media on repeated visits', function () {
-    Storage::fake(config('media.disk'));
-
+it('does not duplicate seeded customers on repeated visits', function () {
     $this->get('/');
-    $mediaCount = Media::withoutGlobalScopes()->count();
+    $customerCount = Customer::withoutGlobalScopes()->count();
 
     $this->get('/');
 
-    expect(Media::withoutGlobalScopes()->count())->toBe($mediaCount);
+    expect(Customer::withoutGlobalScopes()->count())->toBe($customerCount);
 });
 
 it('assigns study app to existing tenant', function () {

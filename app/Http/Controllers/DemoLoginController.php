@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Database\Seeders\MediaTestDataSeeder;
+use Database\Seeders\CustomerTestDataSeeder;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
+use Noerd\Customer\Models\Customer;
 use Noerd\Database\Seeders\SetupLanguageSeeder;
 use Noerd\Enums\Profile;
 use Noerd\Helpers\NoerdAuth;
-use Noerd\Media\Models\Media;
 use Noerd\Models\NoerdUser as User;
 use Noerd\Models\Tenant;
 use Noerd\Models\TenantApp;
@@ -38,7 +37,7 @@ class DemoLoginController extends Controller
         }
 
         $this->ensureStudyAppInstalled($tenant);
-        $this->ensureMediaAppInstalled($tenant);
+        $this->ensureCustomerAppInstalled($tenant);
         $this->ensureSeedersHaveRun();
 
         // Every login URL of the demo routes guests through here, so the demo
@@ -100,12 +99,8 @@ class DemoLoginController extends Controller
             (new StudyTestDataSeeder)->run();
         }
 
-        if (Media::withoutGlobalScopes()->count() === 0) {
-            app(MediaTestDataSeeder::class)->run();
-
-            // Seeded media is served through the public/storage symlink, which
-            // does not exist on a freshly deployed environment.
-            Artisan::call('storage:link');
+        if (Customer::withoutGlobalScopes()->count() === 0) {
+            app(CustomerTestDataSeeder::class)->run();
         }
     }
 
@@ -126,20 +121,20 @@ class DemoLoginController extends Controller
         }
     }
 
-    private function ensureMediaAppInstalled(Tenant $tenant): void
+    private function ensureCustomerAppInstalled(Tenant $tenant): void
     {
-        $mediaApp = TenantApp::query()->firstOrCreate(
-            ['name' => 'MEDIA'],
+        $customerApp = TenantApp::query()->firstOrCreate(
+            ['name' => 'CUSTOMER'],
             [
-                'title' => 'Media',
-                'icon' => 'media::icons.app',
-                'route' => 'media.dashboard',
+                'title' => 'Customer',
+                'icon' => 'customer::icons.app',
+                'route' => 'customers',
                 'is_active' => true,
             ],
         );
 
-        if (! $tenant->tenantApps()->where('tenant_app_id', $mediaApp->id)->exists()) {
-            $tenant->tenantApps()->attach($mediaApp->id);
+        if (! $tenant->tenantApps()->where('tenant_app_id', $customerApp->id)->exists()) {
+            $tenant->tenantApps()->attach($customerApp->id);
         }
     }
 }

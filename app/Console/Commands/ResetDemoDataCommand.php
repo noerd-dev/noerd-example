@@ -26,10 +26,6 @@ class ResetDemoDataCommand extends Command
             '--force' => true,
         ]);
 
-        // The seeded media files are served through the public/storage symlink,
-        // which does not exist on a freshly deployed environment.
-        Artisan::call('storage:link');
-
         $this->info('Demo database has been reset successfully.');
 
         return self::SUCCESS;

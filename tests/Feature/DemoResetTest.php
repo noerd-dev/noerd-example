@@ -10,10 +10,6 @@ it('resets the demo database successfully', function () {
         ->with('migrate:fresh', ['--seed' => true, '--force' => true])
         ->once();
 
-    $kernel->shouldReceive('call')
-        ->with('storage:link')
-        ->once();
-
     Artisan::swap($kernel);
 
     $this->artisan('demo:reset')

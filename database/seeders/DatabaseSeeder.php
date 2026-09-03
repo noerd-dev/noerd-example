@@ -36,21 +36,21 @@ class DatabaseSeeder extends Seeder
 
         $tenant->tenantApps()->attach($studyApp->id);
 
-        $mediaApp = TenantApp::query()->firstOrCreate(
-            ['name' => 'MEDIA'],
+        $customerApp = TenantApp::query()->firstOrCreate(
+            ['name' => 'CUSTOMER'],
             [
-                'title' => 'Media',
-                'icon' => 'media::icons.app',
-                'route' => 'media.dashboard',
+                'title' => 'Customer',
+                'icon' => 'customer::icons.app',
+                'route' => 'customers',
                 'is_active' => true,
             ],
         );
 
-        $tenant->tenantApps()->attach($mediaApp->id);
+        $tenant->tenantApps()->attach($customerApp->id);
 
         $this->call(SetupLanguageSeeder::class);
         $this->call(StudyTestDataSeeder::class);
-        $this->call(MediaTestDataSeeder::class);
+        $this->call(CustomerTestDataSeeder::class);
 
         $user = User::forceCreate([
             'name' => 'Test User',
