@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa32e5bf76b990ccf5a6ee57b290fee3",
+    "content-hash": "2c8eab09d33d3d3bfd6ef6f29e7bb241",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -2829,21 +2829,21 @@
         },
         {
             "name": "noerd/customer",
-            "version": "v0.3.27",
+            "version": "v0.3.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noerd-dev/customer.git",
-                "reference": "50b8d791215107c58765674120f2fbad9de4b50a"
+                "reference": "f1bd0e37d3863314264310834962a51defd75193"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noerd-dev/customer/zipball/50b8d791215107c58765674120f2fbad9de4b50a",
-                "reference": "50b8d791215107c58765674120f2fbad9de4b50a",
+                "url": "https://api.github.com/repos/noerd-dev/customer/zipball/f1bd0e37d3863314264310834962a51defd75193",
+                "reference": "f1bd0e37d3863314264310834962a51defd75193",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^12.0 || ^13.0",
-                "noerd/noerd": "^0.10.10 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0 || ^0.15.0",
+                "noerd/noerd": "^0.10.10 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0 || ^0.15.0 || ^0.16.0",
                 "owen-it/laravel-auditing": "^14.0"
             },
             "type": "library",
@@ -2869,9 +2869,9 @@
             "description": "Customer module for noerd platform",
             "support": {
                 "issues": "https://github.com/noerd-dev/customer/issues",
-                "source": "https://github.com/noerd-dev/customer/tree/v0.3.27"
+                "source": "https://github.com/noerd-dev/customer/tree/v0.3.28"
             },
-            "time": "2026-09-03T17:32:39+00:00"
+            "time": "2026-09-03T22:34:18+00:00"
         },
         {
             "name": "noerd/modal",
@@ -2918,21 +2918,23 @@
         },
         {
             "name": "noerd/noerd",
-            "version": "v0.14.9",
+            "version": "v0.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noerd-dev/noerd.git",
-                "reference": "27b9bdfe775283d2ce0efb77567d6e0b381f1d34"
+                "reference": "8163dff9f4f3df870811fd2aa7cbc9ada9d1377d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noerd-dev/noerd/zipball/27b9bdfe775283d2ce0efb77567d6e0b381f1d34",
-                "reference": "27b9bdfe775283d2ce0efb77567d6e0b381f1d34",
+                "url": "https://api.github.com/repos/noerd-dev/noerd/zipball/8163dff9f4f3df870811fd2aa7cbc9ada9d1377d",
+                "reference": "8163dff9f4f3df870811fd2aa7cbc9ada9d1377d",
                 "shasum": ""
             },
             "require": {
+                "ext-intl": "*",
                 "ext-mbstring": "*",
                 "laravel/framework": "^12.0 || ^13.0",
+                "laravel/prompts": "^0.3.0",
                 "livewire/livewire": "^4.0",
                 "noerd/modal": "^0.3.23",
                 "php": "^8.3",
@@ -2986,22 +2988,22 @@
             ],
             "support": {
                 "issues": "https://github.com/noerd-dev/noerd/issues",
-                "source": "https://github.com/noerd-dev/noerd/tree/v0.14.9"
+                "source": "https://github.com/noerd-dev/noerd/tree/v0.16.0"
             },
-            "time": "2026-09-02T21:28:52+00:00"
+            "time": "2026-09-03T21:55:25+00:00"
         },
         {
             "name": "noerd/study",
-            "version": "v0.3.16",
+            "version": "v0.3.18",
             "dist": {
                 "type": "path",
                 "url": "app-modules/study",
-                "reference": "e8ec0912e44ebbbc5008c32f76560d907f11b80e"
+                "reference": "6bce21ee64b757853970bf496f796834699fd8b9"
             },
             "require": {
                 "barryvdh/laravel-dompdf": "^3.1",
                 "laravel/framework": "^12.0 || ^13.0",
-                "noerd/noerd": "^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0"
+                "noerd/noerd": "^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0 || ^0.15.0 || ^0.16.0"
             },
             "type": "library",
             "extra": {

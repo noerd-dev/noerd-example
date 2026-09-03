@@ -13,7 +13,7 @@
         "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0",
         "noerd/customer": "^0.3.26",
-        "noerd/noerd": "^0.14",
+        "noerd/noerd": "^0.16",
         "noerd/study": "^0.3.13"
     },
     "require-dev": {
