@@ -3019,11 +3019,11 @@
         },
         {
             "name": "noerd/media",
-            "version": "v0.3.4",
+            "version": "v0.3.5",
             "dist": {
                 "type": "path",
                 "url": "app-modules/media",
-                "reference": "d6d016bfddaa1303a6b5f0c95906aeb770ca9258"
+                "reference": "ffb3cfd88b2210d887126a795f1bbdd06425d686"
             },
             "require": {
                 "barryvdh/laravel-dompdf": "^3.1",
@@ -3178,11 +3178,11 @@
         },
         {
             "name": "noerd/study",
-            "version": "v0.3.14",
+            "version": "v0.3.16",
             "dist": {
                 "type": "path",
                 "url": "app-modules/study",
-                "reference": "4f9607108766df875703c2e0ddd76923c2103b6b"
+                "reference": "e8ec0912e44ebbbc5008c32f76560d907f11b80e"
             },
             "require": {
                 "barryvdh/laravel-dompdf": "^3.1",

@@ -1,5 +1,5 @@
 banners:
   - type: warning
     priority: 100
-    dismissible: false
+    dismissible: true
     component: demo-reset-countdown
