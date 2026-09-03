@@ -14,7 +14,7 @@ use Nywerk\Study\Models\StudyMaterial;
 
 uses(RefreshDatabase::class);
 
-it('creates a demo user and redirects to login with flash data', function () {
+it('creates a demo user and redirects to login with the credentials in the session', function () {
     $tenant = Tenant::factory()->create(['name' => 'Default']);
 
     $response = $this->get('/');
@@ -165,6 +165,76 @@ it('renders the demo-aware login component on the login route', function () {
 // must keep its own path or the prefilled credentials are lost.
 it('does not serve the demo login from the path noerd redirects away', function () {
     expect(route('login', absolute: false))->toBe('/demo-login');
+});
+
+it('sends guests from the noerd login screen to the demo login', function () {
+    Tenant::factory()->create(['name' => 'Default']);
+
+    $this->get('/noerd/login')->assertRedirect('/');
+
+    $this->followingRedirects()
+        ->get('/noerd/login')
+        ->assertSuccessful()
+        ->assertSeeLivewire('auth.login')
+        ->assertSee('@demo.test');
+});
+
+it('sends guests from the /login path to the demo login', function () {
+    Tenant::factory()->create(['name' => 'Default']);
+
+    $this->followingRedirects()
+        ->get('/login')
+        ->assertSuccessful()
+        ->assertSeeLivewire('auth.login')
+        ->assertSee('@demo.test');
+});
+
+it('prefills the credentials when the login screen is opened directly', function () {
+    Tenant::factory()->create(['name' => 'Default']);
+
+    $this->get('/demo-login')->assertRedirect('/');
+
+    $this->followingRedirects()
+        ->get('/demo-login')
+        ->assertSuccessful()
+        ->assertSee('@demo.test');
+});
+
+it('keeps the credentials prefilled on a refresh', function () {
+    Tenant::factory()->create(['name' => 'Default']);
+
+    $this->get('/');
+
+    // Flashed credentials would survive the first render only.
+    $this->get('/demo-login')->assertSuccessful()->assertSee('@demo.test');
+    $this->get('/demo-login')->assertSuccessful()->assertSee('@demo.test');
+});
+
+it('reuses the demo user of the running session', function () {
+    Tenant::factory()->create(['name' => 'Default']);
+
+    $this->get('/');
+    $this->get('/');
+    $this->get('/demo-login');
+
+    expect(User::query()->where('is_demo', true)->count())->toBe(1);
+});
+
+it('provisions a new demo user when the one in the session is gone', function () {
+    Tenant::factory()->create(['name' => 'Default']);
+
+    $this->withSession([
+        'demo_email' => 'deleted-demo@demo.test',
+        'demo_password' => 'demo',
+    ]);
+
+    $this->followingRedirects()
+        ->get('/demo-login')
+        ->assertSuccessful()
+        ->assertDontSee('deleted-demo@demo.test')
+        ->assertSee('@demo.test');
+
+    expect(User::query()->where('is_demo', true)->count())->toBe(1);
 });
 
 it('can log in with demo credentials', function () {

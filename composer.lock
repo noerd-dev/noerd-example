@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29ee4c79f0c90362e5516757297a1870",
+    "content-hash": "21aac8ed96650979ba09dfe33149270a",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -3020,10 +3020,16 @@
         {
             "name": "noerd/media",
             "version": "v0.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/noerd-dev/media.git",
+                "reference": "bd16697f5c3184cf8526bcee58570f35ccc9bd6e"
+            },
             "dist": {
-                "type": "path",
-                "url": "app-modules/media",
-                "reference": "ffb3cfd88b2210d887126a795f1bbdd06425d686"
+                "type": "zip",
+                "url": "https://api.github.com/repos/noerd-dev/media/zipball/bd16697f5c3184cf8526bcee58570f35ccc9bd6e",
+                "reference": "bd16697f5c3184cf8526bcee58570f35ccc9bd6e",
+                "shasum": ""
             },
             "require": {
                 "barryvdh/laravel-dompdf": "^3.1",
@@ -3046,18 +3052,20 @@
                 "psr-4": {
                     "Noerd\\Media\\": "src/",
                     "Noerd\\Media\\Tests\\": "tests/",
-                    "Noerd\\Media\\Database\\Factories\\": "database/factories/",
-                    "Noerd\\Media\\Database\\Seeders\\": "database/seeders/"
+                    "Noerd\\Media\\Database\\Seeders\\": "database/seeders/",
+                    "Noerd\\Media\\Database\\Factories\\": "database/factories/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Media module for noerd platform",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/noerd-dev/media/issues",
+                "source": "https://github.com/noerd-dev/media/tree/v0.3.5"
+            },
+            "time": "2026-09-02T21:28:42+00:00"
         },
         {
             "name": "noerd/modal",

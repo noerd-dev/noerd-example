@@ -38,6 +38,32 @@ class DemoLoginController extends Controller
         $this->ensureMediaAppInstalled($tenant);
         $this->ensureSeedersHaveRun();
 
+        // Every login URL of the demo routes guests through here, so the demo
+        // user of the running session is reused instead of piling up a new one
+        // per visit.
+        if (! self::sessionHasDemoUser()) {
+            $this->createDemoUser($tenant);
+        }
+
+        return redirect()->route('login');
+    }
+
+    /**
+     * Whether the session holds the credentials of a demo user that still exists.
+     * The credentials outlive the user whenever `demo:cleanup` or `demo:reset`
+     * wipes the demo data while the session is still alive.
+     */
+    public static function sessionHasDemoUser(): bool
+    {
+        $email = session('demo_email');
+
+        return is_string($email)
+            && $email !== ''
+            && User::query()->where('email', $email)->where('is_demo', true)->exists();
+    }
+
+    private function createDemoUser(Tenant $tenant): void
+    {
         $password = 'demo';
 
         $user = User::forceCreate([
@@ -57,10 +83,10 @@ class DemoLoginController extends Controller
             'locale' => 'en',
         ]);
 
-        session()->flash('demo_email', $user->email);
-        session()->flash('demo_password', $password);
-
-        return redirect()->route('login');
+        // Kept in the session, not flashed: the login screen must stay prefilled
+        // on a refresh and when it is opened directly.
+        session()->put('demo_email', $user->email);
+        session()->put('demo_password', $password);
     }
 
     private function ensureSeedersHaveRun(): void
