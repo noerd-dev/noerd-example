@@ -32,10 +32,14 @@ it('seeds customers with their default addresses', function (): void {
 
 // The customer model is auditable — without the published audits table the
 // detail screen's activity log dies with "no such table: audits".
-it('can read the audit trail of a seeded customer', function (): void {
+it('records and reads the audit trail of a customer', function (): void {
+    // Seeding runs in the console, which the auditing package skips by default.
+    config(['audit.console' => true]);
+
     $this->seed(CustomerTestDataSeeder::class);
 
     $customer = Customer::query()->firstOrFail();
+    $customer->update(['internal_comment' => 'Updated by the test.']);
 
     expect($customer->audits()->count())->toBeGreaterThan(0);
 });
