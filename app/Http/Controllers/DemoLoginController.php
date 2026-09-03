@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Database\Seeders\MediaTestDataSeeder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Noerd\Database\Seeders\SetupLanguageSeeder;
 use Noerd\Enums\Profile;
+use Noerd\Helpers\NoerdAuth;
 use Noerd\Media\Models\Media;
 use Noerd\Models\NoerdUser as User;
 use Noerd\Models\Tenant;
@@ -21,7 +21,10 @@ class DemoLoginController extends Controller
 {
     public function __invoke(): RedirectResponse
     {
-        if (Auth::check()) {
+        // noerd's guard, not the default one: with NOERD_AUTH_DEFAULT unset the two
+        // differ, and sending a session that only the default guard knows to the
+        // apps bounces it straight back to noerd's own login screen.
+        if (NoerdAuth::user() !== null) {
             return redirect()->route('noerd.apps');
         }
 

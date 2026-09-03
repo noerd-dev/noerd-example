@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Auth\Events\Lockout;
-use Illuminate\Support\Facades\Auth;
+use Noerd\Helpers\NoerdAuth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -38,7 +38,11 @@ new #[Layout('noerd::layouts.auth')] class extends Component {
 
         $this->ensureIsNotRateLimited();
 
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        // Always authenticate on the guard noerd protects its routes with. It is
+        // only the app's default guard while NOERD_AUTH_DEFAULT is set, and
+        // logging in on the default guard elsewhere leaves noerd seeing a guest:
+        // the redirect to the apps then bounces straight back to noerd's login.
+        if (!NoerdAuth::guard()->attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -49,7 +53,7 @@ new #[Layout('noerd::layouts.auth')] class extends Component {
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
-        Auth::user()->update(['last_login_at' => now()]);
+        NoerdAuth::user()->update(['last_login_at' => now()]);
 
         $this->redirectIntended(default: route('noerd.apps', absolute: false), navigate: false);
     }

@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 use Noerd\Enums\Profile;
+use Noerd\Helpers\NoerdAuth;
 use Noerd\Media\Models\Media;
 use Noerd\Models\NoerdUser as User;
 use Noerd\Models\SetupLanguage;
@@ -235,6 +237,67 @@ it('provisions a new demo user when the one in the session is gone', function ()
         ->assertSee('@demo.test');
 
     expect(User::query()->where('is_demo', true)->count())->toBe(1);
+});
+
+it('logs in on the guard noerd protects its routes with', function () {
+    $user = User::forceCreate([
+        'name' => 'Demo User',
+        'email' => 'demo-guard@demo.test',
+        'password' => 'demo',
+        'email_verified_at' => now(),
+        'is_demo' => true,
+        'super_admin' => false,
+    ]);
+
+    Livewire::test('auth.login')
+        ->set('email', $user->email)
+        ->set('password', 'demo')
+        ->call('login');
+
+    // Authenticating on the default guard instead leaves noerd seeing a guest,
+    // so the redirect to the apps bounces back to noerd's own login screen.
+    expect(Auth::guard(config('noerd.auth.guard'))->check())->toBeTrue()
+        ->and(NoerdAuth::user()?->id)->toBe($user->id);
+});
+
+it('sends a logged-in visitor from the login screens to the apps', function () {
+    $user = User::forceCreate([
+        'name' => 'Demo User',
+        'email' => 'demo-loggedin@demo.test',
+        'password' => 'demo',
+        'email_verified_at' => now(),
+        'is_demo' => true,
+        'super_admin' => false,
+    ]);
+
+    Auth::guard(config('noerd.auth.guard'))->login($user);
+
+    $this->get('/demo-login')->assertRedirect(route('noerd.apps'));
+    $this->get('/noerd/login')->assertRedirect(route('noerd.apps'));
+});
+
+it('drops a session that is only authenticated on the default guard', function () {
+    Tenant::factory()->create(['name' => 'Default']);
+
+    $stale = User::forceCreate([
+        'name' => 'Stale User',
+        'email' => 'stale@demo.test',
+        'password' => 'password',
+        'email_verified_at' => now(),
+        'is_demo' => false,
+        'super_admin' => false,
+    ]);
+
+    // What a demo visitor is left with when the app logs in on a guard noerd
+    // does not read: noerd sees a guest, Laravel's `guest` middleware does not.
+    Auth::guard('web')->login($stale);
+
+    $this->followingRedirects()
+        ->get('/demo-login')
+        ->assertSuccessful()
+        ->assertSee('@demo.test');
+
+    expect(Auth::guard('web')->check())->toBeFalse();
 });
 
 it('can log in with demo credentials', function () {
