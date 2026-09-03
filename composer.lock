@@ -2829,21 +2829,21 @@
         },
         {
             "name": "noerd/customer",
-            "version": "v0.3.26",
+            "version": "v0.3.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noerd-dev/customer.git",
-                "reference": "094d6d702c163344c05d016bf66a89e25d6ea218"
+                "reference": "50b8d791215107c58765674120f2fbad9de4b50a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noerd-dev/customer/zipball/094d6d702c163344c05d016bf66a89e25d6ea218",
-                "reference": "094d6d702c163344c05d016bf66a89e25d6ea218",
+                "url": "https://api.github.com/repos/noerd-dev/customer/zipball/50b8d791215107c58765674120f2fbad9de4b50a",
+                "reference": "50b8d791215107c58765674120f2fbad9de4b50a",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^12.0 || ^13.0",
-                "noerd/noerd": "^0.10.10 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0",
+                "noerd/noerd": "^0.10.10 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0 || ^0.15.0",
                 "owen-it/laravel-auditing": "^14.0"
             },
             "type": "library",
@@ -2869,22 +2869,22 @@
             "description": "Customer module for noerd platform",
             "support": {
                 "issues": "https://github.com/noerd-dev/customer/issues",
-                "source": "https://github.com/noerd-dev/customer/tree/v0.3.26"
+                "source": "https://github.com/noerd-dev/customer/tree/v0.3.27"
             },
-            "time": "2026-09-02T21:28:33+00:00"
+            "time": "2026-09-03T17:32:39+00:00"
         },
         {
             "name": "noerd/modal",
-            "version": "v0.3.28",
+            "version": "v0.3.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noerd-dev/modal.git",
-                "reference": "24bf246ecadcc63a8d7ab83ef7e5ebdc63b9835a"
+                "reference": "44169c17ae9dcd35bdbe14ed566e599388e4f593"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noerd-dev/modal/zipball/24bf246ecadcc63a8d7ab83ef7e5ebdc63b9835a",
-                "reference": "24bf246ecadcc63a8d7ab83ef7e5ebdc63b9835a",
+                "url": "https://api.github.com/repos/noerd-dev/modal/zipball/44169c17ae9dcd35bdbe14ed566e599388e4f593",
+                "reference": "44169c17ae9dcd35bdbe14ed566e599388e4f593",
                 "shasum": ""
             },
             "require": {
@@ -2912,9 +2912,9 @@
             "description": "Open each livewire component in a modal window.",
             "support": {
                 "issues": "https://github.com/noerd-dev/modal/issues",
-                "source": "https://github.com/noerd-dev/modal/tree/v0.3.28"
+                "source": "https://github.com/noerd-dev/modal/tree/v0.3.29"
             },
-            "time": "2026-09-02T21:28:48+00:00"
+            "time": "2026-09-03T17:30:54+00:00"
         },
         {
             "name": "noerd/noerd",

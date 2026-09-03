@@ -29,3 +29,13 @@ it('seeds customers with their default addresses', function (): void {
             ->and($customer->defaultInvoiceAddress->fingerprint)->not->toBeNull();
     });
 });
+
+// The customer model is auditable — without the published audits table the
+// detail screen's activity log dies with "no such table: audits".
+it('can read the audit trail of a seeded customer', function (): void {
+    $this->seed(CustomerTestDataSeeder::class);
+
+    $customer = Customer::query()->firstOrFail();
+
+    expect($customer->audits()->count())->toBeGreaterThan(0);
+});
