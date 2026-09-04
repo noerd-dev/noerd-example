@@ -1,0 +1,24 @@
+title: System Settings
+fields:
+  - name: detailData.currency
+    label: Currency
+    type: select
+    optionsMethod: currencyOptions
+    required: true
+    helpText: Currency for the tenant
+  - name: detailData.locale
+    label: Locale
+    type: select
+    optionsMethod: localeOptions
+    required: true
+    helpText: Number and date format for documents (PDFs, receipts, e-mails)
+  - name: detailData.detail_theme
+    label: Theme
+    type: select
+    optionsMethod: themeOptions
+    required: true
+    helpText: Default theme for all detail forms. A detail configuration that defines its own theme keeps it.
+  - name: detailData.detail_theme_enforced
+    label: Enforce in Setup
+    type: checkbox
+    helpText: Apply the selected theme everywhere, even where a detail configuration defines a different one.
